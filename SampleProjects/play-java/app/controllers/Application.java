@@ -13,4 +13,14 @@ public class Application extends Controller {
         return ok("<h1>Hello " + name + "!</h1>").as("text/html");
     }
 
+    public Result login(String username) {
+        if(username.startsWith("haytham")) {
+            session("connected", "user@gmail.com");
+            return ok("Welcome!");
+        }
+        else{
+            return ok("Denied!"); //should be 401 unauthorized and not ok
+        }
+    }
+
 }
