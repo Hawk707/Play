@@ -4,8 +4,14 @@
 
 # Home page
 GET     /                           controllers.PersonController.index()
+# Add Person
 POST    /person                     controllers.PersonController.addPerson()
+# Get list of persons
 GET     /persons                    controllers.PersonController.getPersons
-
+# HAY: just testing
+GET     /persons                    controllers.PersonController.getHaytham
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+# HAY: you can call below using localhost:9000/hello/<any name>
+GET   /hello/:name                  controllers.Application.hello(name)
