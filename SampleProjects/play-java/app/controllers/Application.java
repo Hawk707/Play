@@ -12,7 +12,7 @@ public class Application extends Controller {
         response().setHeader(Http.HeaderNames.CACHE_CONTROL, "max-age=3600");
         return ok("<h1>Hello " + name + "!</h1>").as("text/html");
     }
-
+//https://www.playframework.com/documentation/2.5.x/JavaSessionFlash
     public Result login(String username) {
         if(username.startsWith("haytham")) {
             session("connected", "user@gmail.com");
