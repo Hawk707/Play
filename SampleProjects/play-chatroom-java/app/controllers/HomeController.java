@@ -41,6 +41,10 @@ public class HomeController extends Controller {
         this.userFlow = Flow.fromSinkAndSource(chatSink, chatSource).log("userFlow", logging);
     }
 
+    public Result file() {
+        return ok(new java.io.File("C:\\Users\\HAWK-VAIO\\Desktop\\Capture.PNG"));
+    }
+
     public Result index() {
         Http.Request request = request();
         String url = routes.HomeController.chat().webSocketURL(request);

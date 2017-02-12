@@ -53,6 +53,8 @@
                         $send = $("#send"),
                         $message = $("#message"),
                         connection = new WebSocket("@url");
+                        //HAY:
+                        $download = $("#download");
 
                 $send.prop("disabled", true);
 
@@ -60,6 +62,8 @@
                     var text = $message.val();
                     $message.val("");
                     connection.send(text);
+                    //HAY: TESTING SERVING FILES
+                    httpGetAsync('http://localhost:9000/file');
                 };
 
                 connection.onopen = function () {
@@ -79,6 +83,19 @@
                 connection.onmessage = function (event) {
                     $messages.append($("<li style='font-size: 1.5em'>" + event.data + "</li>"))
                 }
+
+                function httpGetAsync(theUrl, callback)
+                {
+                    var xmlHttp = new XMLHttpRequest();
+                 xmlHttp.onreadystatechange = function() {
+                 if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                 callback(xmlHttp.responseText);
+                 }
+                    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+                    xmlHttp.send(null);
+                }
+
+
         </script>
     </body>
 
